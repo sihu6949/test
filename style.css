@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333;
+}
+
+/* 헤더 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #3e2723;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.3s;
+}
+
+header.scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #f5c518;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* 히어로 */
+.hero {
+  background: linear-gradient(135deg, #5c3d2e, #3e2723);
+  color: white;
+  text-align: center;
+  padding: 140px 20px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin-bottom: 16px;
+  animation: fadeUp 0.8s ease;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 36px;
+  color: #d7ccc8;
+  animation: fadeUp 1s ease;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 1.2s ease;
+}
+
+.btn {
+  background-color: #f5c518;
+  color: #3e2723;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: transform 0.2s, background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #e6b800;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-outline:hover {
+  background-color: white;
+  color: #3e2723;
+}
+
+/* 페이드인 애니메이션 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 소개 */
+.about {
+  text-align: center;
+  padding: 80px 40px;
+  background-color: #fdf6f0;
+}
+
+.about h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #3e2723;
+}
+
+.about p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* 메뉴 */
+.menu {
+  text-align: center;
+  padding: 80px 40px;
+  background-color: #fff;
+}
+
+.menu h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #3e2723;
+}
+
+.menu-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  background-color: #fdf6f0;
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 200px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.menu-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.menu-item h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #3e2723;
+}
+
+.menu-item p {
+  color: #888;
+}
+
+/* 오시는 길 */
+.contact {
+  text-align: center;
+  padding: 80px 40px;
+  background-color: #fdf6f0;
+}
+
+.contact h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #3e2723;
+}
+
+.contact p {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+/* 푸터 */
+footer {
+  text-align: center;
+  padding: 24px;
+  background-color: #3e2723;
+  color: #d7ccc8;
+  font-size: 14px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  header {
+    padding: 16px 20px;
+    flex-wrap: wrap;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 12px;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    margin: 8px 0;
+    margin-left: 0;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .menu-item {
+    width: 160px;
+    padding: 24px 16px;
+  }
+}

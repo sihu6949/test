@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>달빛 카페</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo">☕ 달빛 카페</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+      <a href="#about">소개</a>
+      <a href="menu.html">메뉴</a>
+      <a href="reservation.html">예약</a>
+      <a href="#contact">오시는 길</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>편안한 하루의 시작</h1>
+      <p>달빛 카페에서 특별한 커피 한 잔을 경험하세요</p>
+      <div class="hero-btns">
+        <a href="menu.html" class="btn">메뉴 보기</a>
+        <a href="reservation.html" class="btn btn-outline">예약하기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about fade-in" id="about">
+    <h2>카페 소개</h2>
+    <p>달빛 카페는 2020년부터 조용하고 아늑한 공간을 제공해왔습니다.<br>
+    직접 로스팅한 원두로 매일 신선한 커피를 내립니다.</p>
+  </section>
+
+  <section class="menu fade-in" id="menu">
+    <h2>대표 메뉴</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-icon">☕</div>
+        <h3>아메리카노</h3>
+        <p>4,500원</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">🥛</div>
+        <h3>카페라떼</h3>
+        <p>5,500원</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon">🍵</div>
+        <h3>녹차라떼</h3>
+        <p>5,000원</p>
+      </div>
+    </div>
+    <a href="menu.html" class="btn" style="display:inline-block; margin-top:32px;">전체 메뉴 보기</a>
+  </section>
+
+  <section class="contact fade-in" id="contact">
+    <h2>오시는 길</h2>
+    <p>📍 서울시 마포구 달빛로 123</p>
+    <p>🕐 매일 09:00 ~ 22:00</p>
+    <p>📞 02-1234-5678</p>
+  </section>
+
+  <footer>
+    <p>© 2026 달빛 카페. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
