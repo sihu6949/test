@@ -1,54 +1,45 @@
 .page-hero {
-  background: linear-gradient(135deg, #5c3d2e, #3e2723);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.page-hero h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.page-hero p {
-  font-size: 18px;
-  color: #d7ccc8;
-}
-
-.menu-page {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.category {
-  margin-bottom: 48px;
-}
-
-.category h2 {
-  font-size: 26px;
-  color: #3e2723;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #f5c518;
-}
-
-.item-list {
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  background: radial-gradient(ellipse at center, #1a1200 0%, var(--black) 70%);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
 }
-
-.item {
+.page-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.page-hero p { font-size: 13px; color: var(--gray); letter-spacing: 2px; }
+.menu-page { max-width: 800px; margin: 0 auto; padding: 80px 48px 120px; }
+.menu-category { margin-bottom: 72px; }
+.menu-category h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  letter-spacing: 2px;
+}
+.menu-list { display: flex; flex-direction: column; gap: 0; }
+.menu-row {
   display: flex;
-  justify-content: space-between;
-  padding: 14px 20px;
-  background-color: #fdf6f0;
-  border-radius: 10px;
-  font-size: 17px;
-  transition: transform 0.2s;
+  align-items: baseline;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.2s;
 }
-
-.item:hover {
-  transform: translateX(6px);
-}
+.menu-row:hover { padding-left: 12px; }
+.menu-name { font-size: 15px; color: var(--white); white-space: nowrap; }
+.menu-dots { flex: 1; border-bottom: 1px dotted rgba(201,168,76,0.2); margin-bottom: 4px; }
+.menu-price { font-size: 14px; color: var(--gold); white-space: nowrap; font-family: 'Cormorant Garamond', serif; font-size: 16px; }
+@media (max-width: 768px) { .menu-page { padding: 60px 24px 80px; } }
