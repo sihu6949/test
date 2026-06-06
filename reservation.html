@@ -3,146 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>예약 - 달빛 카페</title>
+  <title>RESERVE - NOIR PATISSERIE</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="reservation.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
-
-  <header>
-    <div class="logo"><a href="index.html" style="color:white;text-decoration:none;">☕ 달빛 카페</a></div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav id="nav">
-      <a href="index.html">홈</a>
-      <a href="menu.html">메뉴</a>
-      <a href="reservation.html">예약</a>
-      <a href="index.html#contact">오시는 길</a>
-    </nav>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+  <header id="header">
+    <div class="header-inner">
+      <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;display:flex;align-items:center;gap:12px;"><span class="logo-en">NOIR</span><span class="logo-divider">✦</span><span class="logo-en">PATISSERIE</span></a></div>
+      <div class="hamburger" onclick="toggleMenu()" id="hamburger"><span></span><span></span><span></span></div>
+      <nav id="nav">
+        <a href="index.html">HOME</a>
+        <a href="menu.html">MENU</a>
+        <a href="reservation.html">RESERVE</a>
+        <a href="index.html#contact">VISIT</a>
+      </nav>
+    </div>
   </header>
-
-  <div class="page-hero">
-    <h1>예약하기</h1>
-    <p>달빛 카페에서 특별한 시간을 예약하세요</p>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="toggleMenu()">HOME</a>
+    <a href="menu.html" onclick="toggleMenu()">MENU</a>
+    <a href="reservation.html" onclick="toggleMenu()">RESERVE</a>
+    <a href="index.html#contact" onclick="toggleMenu()">VISIT</a>
   </div>
-
+  <div class="page-hero">
+    <p class="section-tag">RESERVATION</p>
+    <h1>예약</h1>
+    <p>특별한 순간을 위해 자리를 예약하세요</p>
+  </div>
   <section class="reservation-section fade-in">
     <div class="form-box">
-      <div class="form-group">
-        <label>이름 <span class="required">*</span></label>
-        <input type="text" id="name" placeholder="이름을 입력하세요">
-        <span class="error-msg" id="name-error">이름을 입력해주세요</span>
+      <div class="form-row">
+        <div class="form-group">
+          <label>이름 <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="성함을 입력하세요">
+          <span class="err" id="name-error">이름을 입력해주세요</span>
+        </div>
+        <div class="form-group">
+          <label>연락처 <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="010-0000-0000">
+          <span class="err" id="phone-error">연락처를 입력해주세요</span>
+        </div>
       </div>
-      <div class="form-group">
-        <label>연락처 <span class="required">*</span></label>
-        <input type="tel" id="phone" placeholder="010-0000-0000">
-        <span class="error-msg" id="phone-error">연락처를 입력해주세요</span>
-      </div>
-      <div class="form-group">
-        <label>날짜</label>
-        <input type="date" id="date">
-      </div>
-      <div class="form-group">
-        <label>시간</label>
-        <select id="time">
-          <option>09:00</option>
-          <option>10:00</option>
-          <option>11:00</option>
-          <option>12:00</option>
-          <option>13:00</option>
-          <option>14:00</option>
-          <option>15:00</option>
-          <option>16:00</option>
-          <option>17:00</option>
-          <option>18:00</option>
-          <option>19:00</option>
-          <option>20:00</option>
-          <option>21:00</option>
-        </select>
+      <div class="form-row">
+        <div class="form-group">
+          <label>날짜</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label>시간</label>
+          <select id="time">
+            <option>10:00</option><option>11:00</option><option>12:00</option>
+            <option>13:00</option><option>14:00</option><option>15:00</option>
+            <option>16:00</option><option>17:00</option><option>18:00</option>
+            <option>19:00</option><option>20:00</option><option>21:00</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label>인원</label>
         <select id="people">
-          <option>1명</option>
-          <option>2명</option>
-          <option>3명</option>
-          <option>4명</option>
-          <option>5명 이상</option>
+          <option>1명</option><option>2명</option><option>3명</option>
+          <option>4명</option><option>5명 이상</option>
         </select>
       </div>
       <div class="form-group">
         <label>요청사항</label>
-        <textarea id="message" placeholder="특별한 요청사항이 있으시면 입력해주세요"></textarea>
+        <textarea id="message" placeholder="특별한 요청사항이 있으시면 입력해주세요 (기념일, 알레르기 등)"></textarea>
       </div>
-      <button class="btn" id="submit-btn" onclick="submitReservation()">예약 신청하기</button>
+      <button class="btn-submit" id="submit-btn" onclick="submitReservation()">예약 신청하기</button>
     </div>
   </section>
-
   <footer>
-    <p>© 2026 달빛 카페. All rights reserved.</p>
+    <div class="footer-inner">
+      <div class="footer-logo">NOIR ✦ PATISSERIE</div>
+      <p class="footer-desc">장인의 손길로 빚어낸 프리미엄 디저트</p>
+      <p class="footer-copy">© 2026 Noir Patisserie. All rights reserved.</p>
+    </div>
   </footer>
-
   <script src="script.js"></script>
   <script>
     emailjs.init('W0iHjgxDYsff4cmQS');
-
     function toggleMenu() {
-      document.getElementById('nav').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
     }
-
     function submitReservation() {
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-
-      // 유효성 검사
       let valid = true;
-
-      if (!name) {
-        document.getElementById('name-error').style.display = 'block';
-        document.getElementById('name').classList.add('input-error');
-        valid = false;
-      } else {
-        document.getElementById('name-error').style.display = 'none';
-        document.getElementById('name').classList.remove('input-error');
-      }
-
-      if (!phone) {
-        document.getElementById('phone-error').style.display = 'block';
-        document.getElementById('phone').classList.add('input-error');
-        valid = false;
-      } else {
-        document.getElementById('phone-error').style.display = 'none';
-        document.getElementById('phone').classList.remove('input-error');
-      }
-
+      if (!name) { document.getElementById('name-error').style.display = 'block'; document.getElementById('name').classList.add('input-error'); valid = false; }
+      else { document.getElementById('name-error').style.display = 'none'; document.getElementById('name').classList.remove('input-error'); }
+      if (!phone) { document.getElementById('phone-error').style.display = 'block'; document.getElementById('phone').classList.add('input-error'); valid = false; }
+      else { document.getElementById('phone-error').style.display = 'none'; document.getElementById('phone').classList.remove('input-error'); }
       if (!valid) return;
-
-      // 버튼 로딩 상태
       const btn = document.getElementById('submit-btn');
       btn.textContent = '전송 중...';
       btn.disabled = true;
-
-      // EmailJS 전송
       emailjs.send('test123', 'template_r5059gq', {
-        name: name,
-        phone: phone,
+        name, phone,
         date: document.getElementById('date').value || '미정',
         time: document.getElementById('time').value,
         people: document.getElementById('people').value,
         message: document.getElementById('message').value || '없음'
       }).then(() => {
-        alert('예약이 신청되었습니다!\n확인 후 연락드리겠습니다 😊');
+        alert('예약이 신청되었습니다!\n확인 후 연락드리겠습니다 ✦');
         btn.textContent = '예약 신청하기';
         btn.disabled = false;
-        // 폼 초기화
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('date').value = '';
         document.getElementById('message').value = '';
-      }).catch((err) => {
+      }).catch(err => {
         alert('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
-        console.error(err);
         btn.textContent = '예약 신청하기';
         btn.disabled = false;
       });
