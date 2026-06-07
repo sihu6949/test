@@ -1,59 +1,179 @@
-// 로더
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 1400);
-});
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESERVE — NOIR PATISSERIE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reservation.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <header id="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">
+          NOIR <span class="logo-divider">✦</span> PATISSERIE
+        </a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <nav id="nav">
+        <a href="index.html">HOME</a>
+        <a href="menu.html">MENU</a>
+        <a href="reservation.html">RESERVE</a>
+        <a href="index.html#contact">VISIT</a>
+      </nav>
+    </div>
+  </header>
 
-// 헤더 스크롤
-window.addEventListener('scroll', () => {
-  const h = document.getElementById('header');
-  if (window.scrollY > 60) h.classList.add('scrolled');
-  else h.classList.remove('scrolled');
-});
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="toggleMenu()">HOME</a>
+    <a href="menu.html" onclick="toggleMenu()">MENU</a>
+    <a href="reservation.html" onclick="toggleMenu()">RESERVE</a>
+    <a href="index.html#contact" onclick="toggleMenu()">VISIT</a>
+  </div>
 
-// 파티클
-const canvas = document.getElementById('particles');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  for (let i = 0; i < 60; i++) {
-    particles.push({
-      x: Math.random() * W, y: Math.random() * H,
-      r: Math.random() * 1.2 + 0.3,
-      dx: (Math.random() - 0.5) * 0.3,
-      dy: (Math.random() - 0.5) * 0.3,
-      o: Math.random() * 0.4 + 0.1
-    });
-  }
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(201,168,76,${p.o})`;
-      ctx.fill();
-      p.x += p.dx; p.y += p.dy;
-      if (p.x < 0 || p.x > W) p.dx *= -1;
-      if (p.y < 0 || p.y > H) p.dy *= -1;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-}
+  <div class="page-hero">
+    <p class="section-eyebrow">RESERVATION</p>
+    <h1>예약</h1>
+    <p>특별한 순간을 위해 자리를 예약하세요</p>
+    <div class="gold-rule"></div>
+  </div>
 
-// 스크롤 페이드인
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
+  <section class="reservation-section fade-in">
+    <div class="form-box">
+      <div class="form-row">
+        <div class="form-group">
+          <label>이름 <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="성함을 입력하세요">
+          <span class="err" id="name-error">이름을 입력해주세요</span>
+        </div>
+        <div class="form-group">
+          <label>연락처 <span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="010-0000-0000">
+          <span class="err" id="phone-error">연락처를 입력해주세요</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>날짜</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label>시간</label>
+          <select id="time">
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+            <option>17:00</option>
+            <option>18:00</option>
+            <option>19:00</option>
+            <option>20:00</option>
+            <option>21:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>인원</label>
+        <select id="people">
+          <option>1명</option>
+          <option>2명</option>
+          <option>3명</option>
+          <option>4명</option>
+          <option>5명 이상</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>요청사항</label>
+        <textarea id="message" placeholder="특별한 요청사항이 있으시면 입력해주세요 (기념일, 알레르기 등)"></textarea>
+      </div>
+      <button class="btn-submit" id="submit-btn" onclick="submitReservation()">예약 신청하기</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">NOIR ✦ PATISSERIE</div>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="reservation.html">Reserve</a>
+        <a href="index.html#contact">Visit</a>
+      </nav>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <p>© 2026 Noir Patisserie. All rights reserved.</p>
+      <p>Crafted with passion in Seoul</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    emailjs.init('W0iHjgxDYsff4cmQS');
+
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
     }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function submitReservation() {
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      let valid = true;
+
+      if (!name) {
+        document.getElementById('name-error').style.display = 'block';
+        document.getElementById('name').classList.add('input-error');
+        valid = false;
+      } else {
+        document.getElementById('name-error').style.display = 'none';
+        document.getElementById('name').classList.remove('input-error');
+      }
+
+      if (!phone) {
+        document.getElementById('phone-error').style.display = 'block';
+        document.getElementById('phone').classList.add('input-error');
+        valid = false;
+      } else {
+        document.getElementById('phone-error').style.display = 'none';
+        document.getElementById('phone').classList.remove('input-error');
+      }
+
+      if (!valid) return;
+
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = '전송 중...';
+      btn.disabled = true;
+
+      emailjs.send('test123', 'template_r5059gq', {
+        name: name,
+        phone: phone,
+        date: document.getElementById('date').value || '미정',
+        time: document.getElementById('time').value,
+        people: document.getElementById('people').value,
+        message: document.getElementById('message').value || '없음'
+      }).then(() => {
+        alert('예약이 신청되었습니다!\n확인 후 연락드리겠습니다 ✦');
+        btn.textContent = '예약 신청하기';
+        btn.disabled = false;
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('message').value = '';
+      }).catch(() => {
+        alert('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+        btn.textContent = '예약 신청하기';
+        btn.disabled = false;
+      });
+    }
+  </script>
+</body>
+</html>
