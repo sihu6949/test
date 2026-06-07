@@ -19,9 +19,33 @@ body {
   color: var(--white);
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
+  cursor: none;
   overflow-x: hidden;
 }
 
+/* 커스텀 커서 */
+.cursor {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+.cursor-follower {
+  width: 32px; height: 32px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+}
 
 /* 헤더 */
 header {
