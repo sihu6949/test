@@ -19,7 +19,6 @@ body {
   color: var(--white);
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
-  cursor: none;
   overflow-x: hidden;
 }
 
