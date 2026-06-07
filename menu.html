@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MENU - NOIR PATISSERIE</title>
+  <title>MENU — NOIR PATISSERIE</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="menu.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="cursor"></div>
-  <div class="cursor-follower"></div>
   <header id="header">
     <div class="header-inner">
-      <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none;display:flex;align-items:center;gap:12px;"><span class="logo-en">NOIR</span><span class="logo-divider">✦</span><span class="logo-en">PATISSERIE</span></a></div>
+      <div class="logo"><a href="index.html" style="color:inherit;text-decoration:none">NOIR <span class="logo-divider">✦</span> PATISSERIE</a></div>
       <div class="hamburger" onclick="toggleMenu()" id="hamburger"><span></span><span></span><span></span></div>
       <nav id="nav">
         <a href="index.html">HOME</a>
@@ -30,9 +28,10 @@
     <a href="index.html#contact" onclick="toggleMenu()">VISIT</a>
   </div>
   <div class="page-hero">
-    <p class="section-tag">OUR MENU</p>
+    <p class="section-eyebrow">OUR MENU</p>
     <h1>메뉴</h1>
     <p>매일 아침 신선하게 준비됩니다</p>
+    <div class="gold-rule"></div>
   </div>
   <section class="menu-page">
     <div class="menu-category fade-in">
@@ -66,10 +65,19 @@
     </div>
   </section>
   <footer>
-    <div class="footer-inner">
+    <div class="footer-top">
       <div class="footer-logo">NOIR ✦ PATISSERIE</div>
-      <p class="footer-desc">장인의 손길로 빚어낸 프리미엄 디저트</p>
-      <p class="footer-copy">© 2026 Noir Patisserie. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="reservation.html">Reserve</a>
+        <a href="index.html#contact">Visit</a>
+      </nav>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-bottom">
+      <p>© 2026 Noir Patisserie. All rights reserved.</p>
+      <p>Crafted with passion in Seoul</p>
     </div>
   </footer>
   <script src="script.js"></script>
